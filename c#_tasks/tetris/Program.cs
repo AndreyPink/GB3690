@@ -1,7 +1,9 @@
 ﻿
 using System;
+
 string[,] array = {{"1","2","3"}, {"4","5","6"}, {"7","8","9"}};
 
+bool win = false;
 int line = 0;
 int column = 0;
  
@@ -58,16 +60,9 @@ void StepTac()
        column = int.Parse(Console.ReadLine()!);
 }
 
-
-
-Instruction();
-while(true)
+void Check()
 {
-Desk(array);
-StepTic();
-array[line-1,column-1] = "X";
-
-if(array[0,0]==array[0,1] & array[0,0] == array[0,2] | 
+   if(array[0,0]==array[0,1] & array[0,0] == array[0,2] | 
    array[1,0]==array[1,1] & array[1,0] == array[1,2] |
    array[2,0]==array[2,1] & array[2,0] == array[2,2] |
    array[0,0]==array[1,0] & array[0,0] == array[2,0] |
@@ -76,22 +71,29 @@ if(array[0,0]==array[0,1] & array[0,0] == array[0,2] |
    array[0,0]==array[1,1] & array[0,0] == array[2,2] |
    array[2,0]==array[1,1] & array[2,0] == array[0,2] )
    {
+       win = true;
+   }    
+}
+
+
+Instruction();
+while(true)
+{
+Desk(array);
+StepTic();
+array[line-1,column-1] = "X";
+Check();
+Desk(array);
+if(win == true)
+   {
        Console.WriteLine("Победили Крестики! Поздравляю!!!");
        break;
    }
-
-Desk(array);
 StepTac();
 array[line-1,column-1] = "0";
-
-if(array[0,0]==array[0,1] & array[0,0] == array[0,2] | 
-   array[1,0]==array[1,1] & array[1,0] == array[1,2] |
-   array[2,0]==array[2,1] & array[2,0] == array[2,2] |
-   array[0,0]==array[1,0] & array[0,0] == array[2,0] |
-   array[0,1]==array[1,1] & array[0,1] == array[2,1] |
-   array[0,2]==array[1,2] & array[0,2] == array[2,2] |
-   array[0,0]==array[1,1] & array[0,0] == array[2,2] |
-   array[2,0]==array[1,1] & array[2,0] == array[0,2] )
+Check();
+Desk(array);
+if(win == true)
    {
        Console.WriteLine("Победили Крестики! Поздравляю!!!");
        break;
