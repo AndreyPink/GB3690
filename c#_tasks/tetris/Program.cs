@@ -6,6 +6,7 @@ string[,] array = { { " ", " ", " " }, { " ", " ", " " }, { " ", " ", " " } };
 bool win = false;
 int line = 0;
 int column = 0;
+int step = 0;
 
 void Instruction()
 {
@@ -49,6 +50,7 @@ void StepTic()
     line = int.Parse(Console.ReadLine()!);
     Console.WriteLine("Введите номер столбца, в котором расположена клетка и нажмите Enter/Return:");
     column = int.Parse(Console.ReadLine()!);
+    step++;
 }
 
 void StepTac()
@@ -58,6 +60,7 @@ void StepTac()
     line = int.Parse(Console.ReadLine()!);
     Console.WriteLine("Введите номер столбца, в котором расположена клетка и нажмите Enter/Return:");
     column = int.Parse(Console.ReadLine()!);
+    step++;
 }
 
 void CheckTic()
@@ -104,6 +107,11 @@ while (true)
         Console.WriteLine("Победили Крестики! Поздравляю!!!");
         break;
     }
+    else if(step == 9) 
+    {
+       Console.WriteLine("Ничья)) Победила дружба!!!");
+       break;
+    }
     StepTac();
     array[line - 1, column - 1] = "0";
     CheckTac();
@@ -113,5 +121,11 @@ while (true)
         Console.WriteLine("Победили Нолики! Поздравляю!!!");
         break;
     }
+    else if(step == 9) 
+    {
+       Console.WriteLine("Ничья)) Победила дружба!!!");
+       break;
+    }
+
 }
 
