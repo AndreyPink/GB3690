@@ -110,7 +110,7 @@ while (true)
     Desk(array);
     if (win == true)
     {
-        Console.WriteLine("Победили Крестики! Поздравляю!!!");
+        Console.WriteLine("Победили Нолики! Поздравляю!!!");
         break;
     }
 }
