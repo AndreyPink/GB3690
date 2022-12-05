@@ -10,7 +10,7 @@ if(text.Length % 2 == 0)
     {
         Console.WriteLine($"Слово {text} Является палиндромом");
     }
-    else {Console.WriteLine($"Слово {text}  Не является палиндромом");}
+    else {Console.WriteLine($"Слово {text} Не является палиндромом");}
 }
 else
 {
