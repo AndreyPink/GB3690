@@ -24,4 +24,3 @@ else
 {
     Console.WriteLine("Из этого слова нельзя составить палиндром");
 }
-Console.WriteLine(newText.Length);
