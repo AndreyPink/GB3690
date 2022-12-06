@@ -44,7 +44,7 @@ void Desk(string[,] mass)
 }
 
 
-void Step(string name)
+void Step(string name, string C)
 {
     Console.WriteLine($"\nЧтобы поставить {name} нужно ввести номер его клетки,");
     Console.WriteLine("Введите НОМЕР СТРОКИ, в котором расположена клетка и нажмите Enter/Return:");
@@ -52,6 +52,7 @@ void Step(string name)
     Console.WriteLine("Введите НОМЕР СТОЛБЦА, в котором расположена клетка и нажмите Enter/Return:");
     column = int.Parse(Console.ReadLine()!);
     step++;
+    array[line - 1, column - 1] = C;
 }
 
 void Check(string C)
@@ -85,14 +86,12 @@ Instruction();
 while (true)
 {
     Desk(array);
-    Step("КРЕСТИК");
-    array[line - 1, column - 1] = "X";
+    Step("КРЕСТИК", "X");
     Check("X");
     Desk(array);
     ifWin("КРЕСТИКИ");
     if(win == true || step == 9) break;
-    Step("НОЛИК");
-    array[line - 1, column - 1] = "0";
+    Step("НОЛИК", "0");
     Check("0");
     Desk(array);
     ifWin("НОЛИКИ");
