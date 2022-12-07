@@ -16,6 +16,7 @@ void Instruction()
     Console.WriteLine("Ходим по очереди, первый играет КРЕСТАМИ, второй НУЛЯМИ.");
     Console.WriteLine("ЖМИ Enter и ПРИБУДЕТ С НАМИ СИЛА");
     Console.ReadKey();
+    Console.Clear();
     Console.WriteLine("ВОТ МОИ ПРАВИЛА:");
     Console.WriteLine("Тебе нужно будет выбрать клетку в которую ты сделаешь ход.");
     Console.WriteLine("Так как наша доска имеет размер 3x3,");
