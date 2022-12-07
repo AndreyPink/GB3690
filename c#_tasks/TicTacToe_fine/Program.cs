@@ -47,14 +47,15 @@ void Desk(string[,] mass)
 void Step(string name, string C)
 {
     Console.WriteLine($"\nЧтобы поставить {name} нужно ввести номер его клетки,");
-    Console.WriteLine("Введите НОМЕР СТРОКИ, в котором расположена клетка и нажмите Enter/Return:");
+    Console.WriteLine("Введите НОМЕР СТРОКИ, в которой расположена клетка и нажмите Enter/Return:");
     line = int.Parse(Console.ReadLine()!);
     Console.WriteLine("Введите НОМЕР СТОЛБЦА, в котором расположена клетка и нажмите Enter/Return:");
     column = int.Parse(Console.ReadLine()!);
+    if(line > 3 | line < 1 | column > 3 | column < 1 ) CheckDurak(name, C);
+    else if(array[line - 1, column - 1] != " ") CheckDurak(name, C);
     step++;
     array[line - 1, column - 1] = C;
 }
-
 void Check(string C)
 {
     if (array[0, 0] == C & array[0, 1] == C & array[0, 2] == C |
@@ -69,6 +70,16 @@ void Check(string C)
         win = true;
     }
 }
+
+void CheckDurak(string name, string C)
+{
+    Console.WriteLine("Клетки с введенными координатами не существует или она занята");
+        Console.WriteLine("ДЛЯ ВВОДА НОВЫХ КООРДИНАТ НАЖМИТЕ ENTER/RETURN");
+        Console.ReadKey();
+        Desk(array);
+        Step(name, C);
+}
+
 
 void ifWin(string name)
 {
