@@ -97,9 +97,9 @@ void StepAI(string name, string C)
 {
     //первый ход
     if (array[0, 0] == " " && array[0, 2] == " " && array[2, 2] == " " && array[2, 0] == " ") array[0, 0] = C;
-    else if (array[0, 0] == " " && array[0, 2] == " " && array[2, 2] == " " && array[2, 0] != " ") array[0, 0] = C;
-    else if (array[0, 2] == " " && array[2, 2] == " " && array[2, 0] == " " && array[0, 0] != " ") array[0, 2] = C;
-    else if (array[2, 2] == " " && array[2, 0] == " " && array[0, 0] == " " && array[0, 2] != " ") array[2, 2] = C;
+    else if (array[0, 0] == " " && array[0, 2] == " " && array[2, 2] == " " && array[2, 0] == "X") array[0, 0] = C;
+    else if (array[0, 2] == " " && array[2, 2] == " " && array[2, 0] == " " && array[0, 0] == "X") array[0, 2] = C;
+    else if (array[2, 2] == " " && array[2, 0] == " " && array[0, 0] == " " && array[0, 2] == "X") array[2, 2] = C;
 
     //проверка горизонталей
     else if (array[0, 0] == "X" && array[0, 1] == "X" && array[0, 2] == " ") array[0, 2] = C;
