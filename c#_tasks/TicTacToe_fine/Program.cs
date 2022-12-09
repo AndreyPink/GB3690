@@ -95,11 +95,53 @@ void Step(string name, string C)
 
 void StepAI(string name, string C)
 {
-    line = new Random().Next(1, 4);
-    column = new Random().Next(1, 4);
-    if (line > 3 | line < 1 | column > 3 | column < 1) StepAI(name, C);
-    else if (array[line - 1, column - 1] != " ") StepAI(name, C);
-    array[line - 1, column - 1] = C;
+    //первый ход
+    if (array[0, 0] == " " && array[0, 2] == " " && array[2, 2] == " " && array[2, 0] == " ") array[0, 0] = C;
+    else if (array[0, 0] == " " && array[0, 2] == " " && array[2, 2] == " " && array[2, 0] != " ") array[0, 0] = C;
+    else if (array[0, 2] == " " && array[2, 2] == " " && array[2, 0] == " " && array[0, 0] != " ") array[0, 2] = C;
+    else if (array[2, 2] == " " && array[2, 0] == " " && array[0, 0] == " " && array[0, 2] != " ") array[2, 2] = C;
+
+    //проверка горизонталей
+    else if (array[0, 0] == "X" && array[0, 1] == "X" && array[0, 2] == " ") array[0, 2] = C;
+    else if (array[0, 0] == "X" && array[0, 2] == "X" && array[0, 1] == " ") array[0, 1] = C;
+    else if (array[0, 1] == "X" && array[0, 2] == "X" && array[0, 0] == " ") array[0, 0] = C;
+
+    else if (array[1, 0] == "X" && array[1, 1] == "X" && array[1, 2] == " ") array[1, 2] = C;
+    else if (array[1, 0] == "X" && array[1, 2] == "X" && array[1, 1] == " ") array[1, 1] = C;
+    else if (array[1, 1] == "X" && array[1, 2] == "X" && array[1, 0] == " ") array[1, 0] = C;
+
+    else if (array[2, 0] == "X" && array[2, 1] == "X" && array[2, 2] == " ") array[2, 2] = C;
+    else if (array[2, 0] == "X" && array[2, 2] == "X" && array[2, 1] == " ") array[2, 1] = C;
+    else if (array[2, 1] == "X" && array[2, 2] == "X" && array[2, 0] == " ") array[2, 0] = C;
+
+    //проверка вертикалей
+    else if (array[0, 0] == "X" && array[1, 0] == "X" && array[2, 0] == " ") array[2, 0] = C;
+    else if (array[0, 0] == "X" && array[2, 0] == "X" && array[1, 0] == " ") array[1, 0] = C;
+    else if (array[1, 0] == "X" && array[2, 0] == "X" && array[0, 0] == " ") array[0, 0] = C;
+
+    else if (array[0, 1] == "X" && array[1, 1] == "X" && array[2, 1] == " ") array[2, 1] = C;
+    else if (array[0, 1] == "X" && array[2, 1] == "X" && array[1, 1] == " ") array[1, 1] = C;
+    else if (array[1, 1] == "X" && array[2, 1] == "X" && array[0, 1] == " ") array[0, 1] = C;
+
+    else if (array[0, 2] == "X" && array[1, 2] == "X" && array[2, 2] == " ") array[2, 2] = C;
+    else if (array[0, 2] == "X" && array[2, 2] == "X" && array[1, 2] == " ") array[1, 2] = C;
+    else if (array[1, 2] == "X" && array[2, 2] == "X" && array[0, 2] == " ") array[0, 2] = C;
+
+    //проверка диагоналей
+    else if (array[0, 0] == "X" && array[1, 1] == "X" && array[2, 2] == " ") array[2, 2] = C;
+    else if (array[0, 0] == "X" && array[2, 2] == "X" && array[1, 1] == " ") array[1, 1] = C;
+    else if (array[1, 1] == "X" && array[2, 2] == "X" && array[0, 0] == " ") array[0, 0] = C;
+
+    else if (array[2, 0] == "X" && array[1, 1] == "X" && array[0, 2] == " ") array[0, 2] = C;
+    else if (array[2, 0] == "X" && array[0, 2] == "X" && array[1, 1] == " ") array[1, 1] = C;
+    else if (array[1, 1] == "X" && array[0, 2] == "X" && array[2, 0] == " ") array[2, 0] = C;
+    else
+    {
+        line = new Random().Next(1, 4);
+        column = new Random().Next(1, 4);
+        if (array[line - 1, column - 1] != " ") StepAI(name, C);
+        array[line - 1, column - 1] = C;
+    }
 }
 
 
